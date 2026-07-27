@@ -3,6 +3,30 @@ import { Link } from 'react-router-dom';
 
 const overviewItems = [
   {
+    path: '/custom-hooks',
+    title: 'Custom Hooks & DOM Utilities',
+    icon: '📏',
+    category: 'Custom Hooks',
+    description:
+      'Learn useWindowSize screen watcher, useDebugValue DevTools label, useRef DOM access, useLayoutEffect measurement, and useId accessibility.',
+  },
+  {
+    path: '/react-19-hooks',
+    title: 'React 19 New Hooks Suite',
+    icon: '🚀',
+    category: 'React 19 Core',
+    description:
+      'Master React 19 flagship hooks: use() promise unwrapping, useActionState form actions, useOptimistic instant UI, and Suspense fallback.',
+  },
+  {
+    path: '/concurrent-hooks',
+    title: 'Concurrent React Hooks',
+    icon: '⚡',
+    category: 'Concurrency',
+    description:
+      'Master high-performance rendering with useTransition non-blocking tabs, useDeferredValue search input, and useEffectEvent concepts.',
+  },
+  {
     path: '/custom-state',
     title: 'Custom useState Hook',
     icon: '🪝',
@@ -21,7 +45,7 @@ const overviewItems = [
   {
     path: '/memo-callback',
     title: 'useMemo & useCallback',
-    icon: '⚡',
+    icon: '🧠',
     category: 'Performance',
     description:
       'Learn how to prevent unnecessary child re-renders and heavy calculations with memoization and stable callback functions.',
@@ -61,7 +85,7 @@ const overviewItems = [
   {
     path: '/react-19-features',
     title: 'React 19 Core Highlights',
-    icon: '🚀',
+    icon: '✨',
     category: 'New Release',
     description:
       'Overview of React 19 upgrades: actions, context providers as elements, server functions, and automatic compiler optimization.',
@@ -77,7 +101,7 @@ const HomeOverview = () => {
           <div>
             <h1 className="concept-title">React 19 Masterclass & Interactive Lab</h1>
             <p className="concept-subtitle" style={{ color: '#38bdf8', fontSize: '0.9rem', margin: '0.2rem 0 0 0', fontWeight: 600 }}>
-              From Legacy Class Components to React Router & React 19 Architecture
+              Complete Student Guide to Modern Hooks, Concurrent Rendering & React 19 APIs
             </p>
           </div>
         </div>

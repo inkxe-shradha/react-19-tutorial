@@ -11,6 +11,27 @@ const conceptNavItems = [
     badgeColor: 'badge-blue',
   },
   {
+    path: '/custom-hooks',
+    label: 'Custom Hooks & DOM',
+    icon: '📏',
+    badge: 'useRef & useId',
+    badgeColor: 'badge-purple',
+  },
+  {
+    path: '/react-19-hooks',
+    label: 'React 19 Hooks',
+    icon: '🚀',
+    badge: 'use() & Actions',
+    badgeColor: 'badge-cyan',
+  },
+  {
+    path: '/concurrent-hooks',
+    label: 'Concurrent Hooks',
+    icon: '⚡',
+    badge: 'useTransition',
+    badgeColor: 'badge-amber',
+  },
+  {
     path: '/custom-state',
     label: 'Custom useState Hook',
     icon: '🪝',
@@ -27,7 +48,7 @@ const conceptNavItems = [
   {
     path: '/memo-callback',
     label: 'Memo & useCallback',
-    icon: '⚡',
+    icon: '🧠',
     badge: 'Performance',
     badgeColor: 'badge-amber',
   },
@@ -62,7 +83,7 @@ const conceptNavItems = [
   {
     path: '/react-19-features',
     label: 'React 19 Highlights',
-    icon: '🚀',
+    icon: '✨',
     badge: 'New Features',
     badgeColor: 'badge-cyan',
   },

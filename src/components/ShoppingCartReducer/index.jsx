@@ -11,7 +11,7 @@ const reducer = (state, action) => {
   switch (action.type) {
     case 'ADD_ITEM': {
       const exitingItemIndex = state.items.findIndex(
-        (item) => item.id === action.payload.id
+        (item) => item.id === action.payload.id,
       );
       let updatedItems;
       if (exitingItemIndex >= 0) {
@@ -28,7 +28,31 @@ const reducer = (state, action) => {
         items: updatedItems,
         totalAmount: updatedItems.reduce(
           (acc, item) => acc + item.price * item.quantity,
-          0
+          0,
+        ),
+        totalItems: updatedItems.reduce((acc, item) => acc + item.quantity, 0),
+      };
+    }
+    case 'REMOVE_ITEM': {
+      const exitingItemIndex = state.items.findIndex(
+        (item) => item.id === action.payload.id,
+      );
+      if (exitingItemIndex < 0) return state; // Item not found
+      const updatedItems = [...state.items];
+      if (updatedItems[exitingItemIndex].quantity > 1) {
+        updatedItems[exitingItemIndex] = {
+          ...updatedItems[exitingItemIndex],
+          quantity: updatedItems[exitingItemIndex].quantity - 1,
+        };
+      } else {
+        updatedItems.splice(exitingItemIndex, 1);
+      }
+      return {
+        ...state,
+        items: updatedItems,
+        totalAmount: updatedItems.reduce(
+          (acc, item) => acc + item.price * item.quantity,
+          0,
         ),
         totalItems: updatedItems.reduce((acc, item) => acc + item.quantity, 0),
       };
@@ -82,10 +106,11 @@ const ShoppingCartReducers = () => {
         ) : (
           <div>
             {state.items?.map((item) => (
-              <div key={item.id}>
+              <div key={item.id} className="flex">
                 <h3>
                   {item.name} - {item.price} x {item.quantity}{' '}
                 </h3>
+                <button className="margin-top">Remove One Quantity</button>
               </div>
             ))}
             <h3>Total Items: {state.totalItems} </h3>

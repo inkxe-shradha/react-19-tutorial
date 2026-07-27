@@ -11,7 +11,8 @@ const ReducerCounterDemo = () => {
           <span className="nav-badge badge-indigo">State Management</span>
         </div>
         <p className="concept-description">
-          Demonstrates state transition logic using action dispatching and lazy initialization functions in <code>useReducer</code>.
+          Demonstrates state transition logic using action dispatching and lazy
+          initialization functions in <code>useReducer</code>.
         </p>
       </div>
 

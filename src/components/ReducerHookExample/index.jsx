@@ -1,6 +1,7 @@
 import { useReducer } from 'react';
 
 const initialState = 0;
+
 const reducer = (state, action) => {
   switch (action) {
     case 'increment':
@@ -14,6 +15,7 @@ const reducer = (state, action) => {
   }
 };
 
+// Optional like API call
 const initLazyInitializer = (initialValue) => {
   console.log('This function is called at once during initial render');
   return initialValue + 100;
@@ -22,7 +24,7 @@ const ReducerHooks = () => {
   const [count, dispatch] = useReducer(
     reducer,
     initialState,
-    initLazyInitializer
+    initLazyInitializer // optional lazy initializer function
   );
   return (
     <div className="margin-top">

@@ -11,7 +11,9 @@ const ShoppingCartDemo = () => {
           <span className="nav-badge badge-pink">Complex Reducer</span>
         </div>
         <p className="concept-description">
-          A practical application of <code>useReducer</code> managing complex state: adding items, calculating total item quantities, dynamically computing order totals, and updating nested array structures.
+          A practical application of <code>useReducer</code> managing complex
+          state: adding items, calculating total item quantities, dynamically
+          computing order totals, and updating nested array structures.
         </p>
       </div>
 

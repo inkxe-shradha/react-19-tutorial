@@ -4,6 +4,9 @@ import Layout from './components/layout/Layout';
 
 // Concept Pages
 import HomeOverview from './components/concepts/HomeOverview';
+import CustomHooksDemo from './components/concepts/CustomHooksDemo';
+import React19HooksDemo from './components/concepts/React19HooksDemo';
+import ConcurrentHooksDemo from './components/concepts/ConcurrentHooksDemo';
 import CustomStateDemo from './components/concepts/CustomStateDemo';
 import ContextDemo from './components/concepts/ContextDemo';
 import MemoCallbackDemo from './components/concepts/MemoCallbackDemo';
@@ -19,6 +22,9 @@ function App() {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<HomeOverview />} />
+          <Route path="custom-hooks" element={<CustomHooksDemo />} />
+          <Route path="react-19-hooks" element={<React19HooksDemo />} />
+          <Route path="concurrent-hooks" element={<ConcurrentHooksDemo />} />
           <Route path="custom-state" element={<CustomStateDemo />} />
           <Route path="context-api" element={<ContextDemo />} />
           <Route path="memo-callback" element={<MemoCallbackDemo />} />
