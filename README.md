@@ -12,3 +12,7 @@ Welcome to the React 19 Tutorial! This guide will help you get started with the 
 - Performance Optimizations
 - Migration Guide from React 18 to React 19.
 - Conditional Rendering in React 19 : Activity Component Example
+- props drilling : Using Context API to avoid props drilling
+- Custom Hooks : Building a useFetch Hook
+- State Management with useReducer : Shopping Cart Example
+- Context API Enhancements: It will broadcast updates more efficiently high level overview
