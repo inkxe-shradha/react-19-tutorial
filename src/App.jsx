@@ -1,66 +1,35 @@
-import React, { useCallback, useState } from 'react';
-import './css/App.css';
-import ReducerHooks from './components/ReducerHookExample';
-import ShoppingCartReducers from './components/ShoppingCartReducer';
-import useStateCustom from './hooks/customUseState';
-import { AppContext } from './context/AppContext';
-import Button from './components/Button/Button';
-import UserContext from './context/UserContext';
-import MemoComponent from './components/Section/MemoComponent';
-const products = [
-  { id: 1, name: 'Product A' },
-  { id: 2, name: 'Product B' },
-  { id: 3, name: 'Product C' },
-];
+import React from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Layout from './components/layout/Layout';
+
+// Concept Pages
+import HomeOverview from './components/concepts/HomeOverview';
+import CustomStateDemo from './components/concepts/CustomStateDemo';
+import ContextDemo from './components/concepts/ContextDemo';
+import MemoCallbackDemo from './components/concepts/MemoCallbackDemo';
+import ReducerCounterDemo from './components/concepts/ReducerCounterDemo';
+import ShoppingCartDemo from './components/concepts/ShoppingCartDemo';
+import ClassComponentsDemo from './components/concepts/ClassComponentsDemo';
+import ReactRouterDemo from './components/concepts/ReactRouterDemo';
+import React19FeaturesDemo from './components/concepts/React19FeaturesDemo';
 
 function App() {
-  const [listData, setListData] = useStateCustom([1, 2, 3, 4, 5]);
-  const [prodductArry, setProductArray] = useState(products);
-  const [user, setUser] = useState({
-    name: 'John',
-    age: 30,
-    email: 'jhonedoe@gmail.com',
-  });
-  const toggelProduct = () => {
-    setProductArray((prevProducts) => {
-      if (prevProducts.length === products.length) {
-        return prevProducts.filter((product) => product.id !== 2);
-      } else {
-        return products;
-      }
-    });
-  };
-
-  const handelDeleteProductById = useCallback(
-    (id) => {
-      return () => {
-        setProductArray((prevProducts) =>
-          prevProducts.filter((product) => product.id !== id),
-        );
-      };
-    },
-    [setProductArray],
-  );
   return (
-    <AppContext value={{ listData, setListData }}>
-      <UserContext value={{ user, setUser }}>
-        <Button />
-        <button onClick={toggelProduct}>Change Product Filter Status</button>
-        <button onClick={() => handelDeleteProductById(2)}>
-          {' '}
-          Delete Product
-        </button>
-        <MemoComponent products={prodductArry} filterText="Product" />
-      </UserContext>
-      {/* <h2>List count: {listData.length}</h2>
-      {listData.map((item, index) => (
-        <div key={index} className="item">
-          Item {item}
-        </div>
-      ))} */}
-      {/* <ReducerHooks /> */}
-      {/* <ShoppingCartReducers /> */}
-    </AppContext>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<HomeOverview />} />
+          <Route path="custom-state" element={<CustomStateDemo />} />
+          <Route path="context-api" element={<ContextDemo />} />
+          <Route path="memo-callback" element={<MemoCallbackDemo />} />
+          <Route path="reducer-counter" element={<ReducerCounterDemo />} />
+          <Route path="shopping-cart" element={<ShoppingCartDemo />} />
+          <Route path="class-components" element={<ClassComponentsDemo />} />
+          <Route path="react-router" element={<ReactRouterDemo />} />
+          <Route path="react-19-features" element={<React19FeaturesDemo />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
