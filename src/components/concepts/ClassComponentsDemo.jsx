@@ -13,7 +13,6 @@ import React, { Component } from 'react';
 class CounterClassComponent extends Component {
   constructor(props) {
     super(props); // Required: passes props to React.Component base class
-    
     // Initializing local state
     this.state = {
       count: 0,
@@ -156,6 +155,9 @@ class UserFetcherClassComponent extends Component {
   componentDidUpdate(prevProps, prevState) {
     // If userId changed, fetch new user data!
     if (prevState.userId !== this.state.userId) {
+      console.log(
+        `[Lifecycle] componentDidUpdate: prevUserId=${prevState.userId}, currentUserId=${this.state.userId}`,
+      );
       this.fetchUser(this.state.userId);
     }
   }
@@ -235,55 +237,171 @@ const ClassComponentsDemo = () => {
           <span className="nav-badge badge-amber">Legacy Guide</span>
         </div>
         <p className="concept-description">
-          Before React 16.8 introduced Hooks (like <code>useState</code> and <code>useEffect</code>), state and lifecycle methods were managed exclusively inside <strong>ES6 Class Components</strong> using <code>this.state</code>, <code>this.setState()</code>, and lifecycle methods like <code>componentDidMount</code>.
+          Before React 16.8 introduced Hooks (like <code>useState</code> and{' '}
+          <code>useEffect</code>), state and lifecycle methods were managed
+          exclusively inside <strong>ES6 Class Components</strong> using{' '}
+          <code>this.state</code>, <code>this.setState()</code>, and lifecycle
+          methods like <code>componentDidMount</code>.
         </p>
       </div>
 
       {/* Concept Card 1: Interactive Demos */}
       <div className="concept-card">
-        <h3 className="concept-card-title">🖥️ Interactive Class Component Demos</h3>
+        <h3 className="concept-card-title">
+          🖥️ Interactive Class Component Demos
+        </h3>
         <CounterClassComponent />
         <UserFetcherClassComponent />
       </div>
 
       {/* Concept Card 2: Educational Comparison Table & Comment Explanation */}
       <div className="concept-card">
-        <h3 className="concept-card-title">📚 Cheat Sheet: Class Components vs Functional Hooks</h3>
+        <h3 className="concept-card-title">
+          📚 Cheat Sheet: Class Components vs Functional Hooks
+        </h3>
 
         <div style={{ overflowX: 'auto', margin: '1rem 0' }}>
-          <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', fontSize: '0.85rem' }}>
+          <table
+            style={{
+              width: '100%',
+              borderCollapse: 'collapse',
+              textAlign: 'left',
+              fontSize: '0.85rem',
+            }}
+          >
             <thead>
-              <tr style={{ background: '#0f172a', borderBottom: '2px solid #334155' }}>
-                <th style={{ padding: '0.75rem', color: '#38bdf8' }}>Feature</th>
-                <th style={{ padding: '0.75rem', color: '#fbbf24' }}>Class Component (Legacy)</th>
-                <th style={{ padding: '0.75rem', color: '#4ade80' }}>Functional Component (Modern)</th>
+              <tr
+                style={{
+                  background: '#0f172a',
+                  borderBottom: '2px solid #334155',
+                }}
+              >
+                <th style={{ padding: '0.75rem', color: '#38bdf8' }}>
+                  Feature
+                </th>
+                <th style={{ padding: '0.75rem', color: '#fbbf24' }}>
+                  Class Component (Legacy)
+                </th>
+                <th style={{ padding: '0.75rem', color: '#4ade80' }}>
+                  Functional Component (Modern)
+                </th>
               </tr>
             </thead>
             <tbody>
               <tr style={{ borderBottom: '1px solid #1e293b' }}>
-                <td style={{ padding: '0.75rem', fontWeight: 600 }}>State Declaration</td>
-                <td style={{ padding: '0.75rem', fontFamily: 'monospace', color: '#fef08a' }}>this.state = &#123; count: 0 &#125;</td>
-                <td style={{ padding: '0.75rem', fontFamily: 'monospace', color: '#bbf7d0' }}>const [count, setCount] = useState(0)</td>
+                <td style={{ padding: '0.75rem', fontWeight: 600 }}>
+                  State Declaration
+                </td>
+                <td
+                  style={{
+                    padding: '0.75rem',
+                    fontFamily: 'monospace',
+                    color: '#fef08a',
+                  }}
+                >
+                  this.state = &#123; count: 0 &#125;
+                </td>
+                <td
+                  style={{
+                    padding: '0.75rem',
+                    fontFamily: 'monospace',
+                    color: '#bbf7d0',
+                  }}
+                >
+                  const [count, setCount] = useState(0)
+                </td>
               </tr>
               <tr style={{ borderBottom: '1px solid #1e293b' }}>
-                <td style={{ padding: '0.75rem', fontWeight: 600 }}>State Updates</td>
-                <td style={{ padding: '0.75rem', fontFamily: 'monospace', color: '#fef08a' }}>this.setState(&#123; count: 1 &#125;)</td>
-                <td style={{ padding: '0.75rem', fontFamily: 'monospace', color: '#bbf7d0' }}>setCount(1)</td>
+                <td style={{ padding: '0.75rem', fontWeight: 600 }}>
+                  State Updates
+                </td>
+                <td
+                  style={{
+                    padding: '0.75rem',
+                    fontFamily: 'monospace',
+                    color: '#fef08a',
+                  }}
+                >
+                  this.setState(&#123; count: 1 &#125;)
+                </td>
+                <td
+                  style={{
+                    padding: '0.75rem',
+                    fontFamily: 'monospace',
+                    color: '#bbf7d0',
+                  }}
+                >
+                  setCount(1)
+                </td>
               </tr>
               <tr style={{ borderBottom: '1px solid #1e293b' }}>
-                <td style={{ padding: '0.75rem', fontWeight: 600 }}>Component Mount</td>
-                <td style={{ padding: '0.75rem', fontFamily: 'monospace', color: '#fef08a' }}>componentDidMount() &#123; ... &#125;</td>
-                <td style={{ padding: '0.75rem', fontFamily: 'monospace', color: '#bbf7d0' }}>useEffect(() =&gt; &#123; ... &#125;, [])</td>
+                <td style={{ padding: '0.75rem', fontWeight: 600 }}>
+                  Component Mount
+                </td>
+                <td
+                  style={{
+                    padding: '0.75rem',
+                    fontFamily: 'monospace',
+                    color: '#fef08a',
+                  }}
+                >
+                  componentDidMount() &#123; ... &#125;
+                </td>
+                <td
+                  style={{
+                    padding: '0.75rem',
+                    fontFamily: 'monospace',
+                    color: '#bbf7d0',
+                  }}
+                >
+                  useEffect(() =&gt; &#123; ... &#125;, [])
+                </td>
               </tr>
               <tr style={{ borderBottom: '1px solid #1e293b' }}>
-                <td style={{ padding: '0.75rem', fontWeight: 600 }}>Component Update</td>
-                <td style={{ padding: '0.75rem', fontFamily: 'monospace', color: '#fef08a' }}>componentDidUpdate(prevProps, prevState)</td>
-                <td style={{ padding: '0.75rem', fontFamily: 'monospace', color: '#bbf7d0' }}>useEffect(() =&gt; &#123; ... &#125;, [deps])</td>
+                <td style={{ padding: '0.75rem', fontWeight: 600 }}>
+                  Component Update
+                </td>
+                <td
+                  style={{
+                    padding: '0.75rem',
+                    fontFamily: 'monospace',
+                    color: '#fef08a',
+                  }}
+                >
+                  componentDidUpdate(prevProps, prevState)
+                </td>
+                <td
+                  style={{
+                    padding: '0.75rem',
+                    fontFamily: 'monospace',
+                    color: '#bbf7d0',
+                  }}
+                >
+                  useEffect(() =&gt; &#123; ... &#125;, [deps])
+                </td>
               </tr>
               <tr>
-                <td style={{ padding: '0.75rem', fontWeight: 600 }}>Cleanup / Unmount</td>
-                <td style={{ padding: '0.75rem', fontFamily: 'monospace', color: '#fef08a' }}>componentWillUnmount()</td>
-                <td style={{ padding: '0.75rem', fontFamily: 'monospace', color: '#bbf7d0' }}>useEffect(() =&gt; () =&gt; cleanup, [])</td>
+                <td style={{ padding: '0.75rem', fontWeight: 600 }}>
+                  Cleanup / Unmount
+                </td>
+                <td
+                  style={{
+                    padding: '0.75rem',
+                    fontFamily: 'monospace',
+                    color: '#fef08a',
+                  }}
+                >
+                  componentWillUnmount()
+                </td>
+                <td
+                  style={{
+                    padding: '0.75rem',
+                    fontFamily: 'monospace',
+                    color: '#bbf7d0',
+                  }}
+                >
+                  useEffect(() =&gt; () =&gt; cleanup, [])
+                </td>
               </tr>
             </tbody>
           </table>

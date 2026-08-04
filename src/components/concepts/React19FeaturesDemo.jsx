@@ -1,4 +1,5 @@
 import React, { useActionState, useState } from 'react';
+import style from '../../css/react19feature.module.css'; // Import CSS module for styling
 
 // Example React 19 Action Function
 async function updateUsernameAction(previousState, formData) {
@@ -7,7 +8,10 @@ async function updateUsernameAction(previousState, formData) {
   await new Promise((resolve) => setTimeout(resolve, 800));
 
   if (!newName || newName.length < 3) {
-    return { error: 'Username must be at least 3 characters long', name: previousState.name };
+    return {
+      error: 'Username must be at least 3 characters long',
+      name: previousState.name,
+    };
   }
   return { error: null, name: newName };
 }
@@ -24,18 +28,21 @@ const React19FeaturesDemo = () => {
       <div className="concept-header">
         <div className="concept-header-top">
           <span style={{ fontSize: '1.75rem' }}>🚀</span>
-          <h1 className="concept-title">React 19 Core Highlights</h1>
+          <h1 className={style['concept-title']}>React 19 Core Highlights</h1>
           <span className="nav-badge badge-cyan">v19 Features</span>
         </div>
         <p className="concept-description">
-          React 19 introduces ground-breaking improvements to form handling (Actions), context usage, reference passing, and build optimizations.
+          React 19 introduces ground-breaking improvements to form handling
+          (Actions), context usage, reference passing, and build optimizations.
         </p>
       </div>
 
       <div className="concept-card">
         <h3 className="concept-card-title">1️⃣ Actions & useActionState</h3>
         <p style={{ color: '#94a3b8', fontSize: '0.9rem' }}>
-          React 19 includes built-in support for async transitions and form submissions via <code>useActionState</code>. It automatically tracks <code>isPending</code> states and errors!
+          React 19 includes built-in support for async transitions and form
+          submissions via <code>useActionState</code>. It automatically tracks{' '}
+          <code>isPending</code> states and errors!
         </p>
 
         <div className="demo-box">
@@ -46,7 +53,10 @@ const React19FeaturesDemo = () => {
             Current Profile Name: <strong>{state.name}</strong>
           </p>
 
-          <form action={formAction} style={{ display: 'flex', gap: '0.75rem', alignItems: 'center' }}>
+          <form
+            action={formAction}
+            style={{ display: 'flex', gap: '0.75rem', alignItems: 'center' }}
+          >
             <input
               type="text"
               name="username"
@@ -67,7 +77,13 @@ const React19FeaturesDemo = () => {
           </form>
 
           {state.error && (
-            <p style={{ color: '#f87171', margin: '0.75rem 0 0 0', fontSize: '0.85rem' }}>
+            <p
+              style={{
+                color: '#f87171',
+                margin: '0.75rem 0 0 0',
+                fontSize: '0.85rem',
+              }}
+            >
               ⚠️ {state.error}
             </p>
           )}
@@ -76,23 +92,56 @@ const React19FeaturesDemo = () => {
 
       <div className="concept-card">
         <h3 className="concept-card-title">2️⃣ Major Syntax & API Simplified</h3>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1rem' }}>
-          <div style={{ background: '#0f172a', padding: '1rem', borderRadius: '10px' }}>
-            <h4 style={{ color: '#4ade80', margin: '0 0 0.5rem 0' }}>Context as Provider</h4>
+        <div
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+            gap: '1rem',
+          }}
+        >
+          <div
+            style={{
+              background: '#0f172a',
+              padding: '1rem',
+              borderRadius: '10px',
+            }}
+          >
+            <h4 style={{ color: '#4ade80', margin: '0 0 0.5rem 0' }}>
+              Context as Provider
+            </h4>
             <p style={{ fontSize: '0.85rem', color: '#94a3b8' }}>
-              No more <code>&lt;MyContext.Provider&gt;</code>. Render <code>&lt;MyContext value=&#123;val&#125;&gt;</code> directly.
+              No more <code>&lt;MyContext.Provider&gt;</code>. Render{' '}
+              <code>&lt;MyContext value=&#123;val&#125;&gt;</code> directly.
             </p>
           </div>
-          <div style={{ background: '#0f172a', padding: '1rem', borderRadius: '10px' }}>
-            <h4 style={{ color: '#c084fc', margin: '0 0 0.5rem 0' }}>ref as a Prop</h4>
+          <div
+            style={{
+              background: '#0f172a',
+              padding: '1rem',
+              borderRadius: '10px',
+            }}
+          >
+            <h4 style={{ color: '#c084fc', margin: '0 0 0.5rem 0' }}>
+              ref as a Prop
+            </h4>
             <p style={{ fontSize: '0.85rem', color: '#94a3b8' }}>
-              <code>forwardRef</code> is obsolete! Access <code>ref</code> directly from component props: <code>({'{ ref, label }'})</code>.
+              <code>forwardRef</code> is obsolete! Access <code>ref</code>{' '}
+              directly from component props: <code>({'{ ref, label }'})</code>.
             </p>
           </div>
-          <div style={{ background: '#0f172a', padding: '1rem', borderRadius: '10px' }}>
-            <h4 style={{ color: '#fbbf24', margin: '0 0 0.5rem 0' }}>The use() Hook</h4>
+          <div
+            style={{
+              background: '#0f172a',
+              padding: '1rem',
+              borderRadius: '10px',
+            }}
+          >
+            <h4 style={{ color: '#fbbf24', margin: '0 0 0.5rem 0' }}>
+              The use() Hook
+            </h4>
             <p style={{ fontSize: '0.85rem', color: '#94a3b8' }}>
-              Read promises & contexts inside loops or conditional statements dynamically with <code>use(resource)</code>.
+              Read promises & contexts inside loops or conditional statements
+              dynamically with <code>use(resource)</code>.
             </p>
           </div>
         </div>

@@ -47,8 +47,9 @@ const reducer = (state, action) => {
       } else {
         updatedItems.splice(exitingItemIndex, 1);
       }
+
       return {
-        ...state,
+        ...state, // Return a new state object with updated items, totalAmount, and totalItems
         items: updatedItems,
         totalAmount: updatedItems.reduce(
           (acc, item) => acc + item.price * item.quantity,
@@ -80,6 +81,7 @@ const ShoppingCartReducers = () => {
       price: 59.99,
     },
   ];
+
   const [state, dispatch] = useReducer(reducer, initialState);
   return (
     <div>
@@ -110,7 +112,17 @@ const ShoppingCartReducers = () => {
                 <h3>
                   {item.name} - {item.price} x {item.quantity}{' '}
                 </h3>
-                <button className="margin-top">Remove One Quantity</button>
+                <button
+                  onClick={() =>
+                    dispatch({
+                      type: 'REMOVE_ITEM',
+                      payload: item,
+                    })
+                  }
+                  className="margin-top"
+                >
+                  Remove One Quantity
+                </button>
               </div>
             ))}
             <h3>Total Items: {state.totalItems} </h3>
