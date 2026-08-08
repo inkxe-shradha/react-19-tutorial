@@ -4,7 +4,6 @@ import Layout from './components/layout/Layout';
 
 // Concept Pages
 import HomeOverview from './components/concepts/HomeOverview';
-import CustomHooksDemo from './components/concepts/CustomHooksDemo';
 import React19HooksDemo from './components/concepts/React19HooksDemo';
 import ConcurrentHooksDemo from './components/concepts/ConcurrentHooksDemo';
 import CustomStateDemo from './components/concepts/CustomStateDemo';
@@ -15,6 +14,21 @@ import ShoppingCartDemo from './components/concepts/ShoppingCartDemo';
 import ClassComponentsDemo from './components/concepts/ClassComponentsDemo';
 import ReactRouterDemo from './components/concepts/ReactRouterDemo';
 import React19FeaturesDemo from './components/concepts/React19FeaturesDemo';
+
+const CustomHooksDemo = React.lazy(
+  () => import('./components/concepts/CustomHooksDemo'),
+);
+const WeatherApp = React.lazy(() => import('./pages/WeatherApp'));
+
+const NotFound = () => (
+  <div style={{ padding: '2rem', textAlign: 'center' }}>
+    <h1 style={{ fontSize: '2rem', color: '#f87171' }}>404 - Page Not Found</h1>
+    <p style={{ color: '#cbd5e1' }}>
+      The page you are looking for does not exist. Please check the URL or
+      return to the home page.
+    </p>
+  </div>
+);  
 
 function App() {
   return (
@@ -33,6 +47,9 @@ function App() {
           <Route path="class-components" element={<ClassComponentsDemo />} />
           <Route path="react-router" element={<ReactRouterDemo />} />
           <Route path="react-19-features" element={<React19FeaturesDemo />} />
+          <Route path="weather-app" element={<WeatherApp />} />
+          {/* Not found */}
+          <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
     </BrowserRouter>

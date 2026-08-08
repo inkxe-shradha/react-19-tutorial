@@ -87,6 +87,13 @@ const conceptNavItems = [
     badge: 'New Features',
     badgeColor: 'badge-cyan',
   },
+  {
+    path: '/weather-app',
+    label: 'Weather App',
+    icon: '☀️',
+    badge: 'Weather',
+    badgeColor: 'badge-green',
+  },
 ];
 
 const Sidebar = () => {

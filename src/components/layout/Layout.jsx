@@ -7,7 +7,7 @@ const Layout = () => {
   const location = useLocation();
 
   return (
-    <div className="app-container">
+    <div className="container flex text-[#f8fafc] font-sans box-border bg-linear-gradient-to-r from-[#0f172a] to-[#1e293b] min-h-screen">
       <Sidebar />
       <main className="main-content">
         <header className="top-header">
