@@ -3,6 +3,14 @@ import { Link } from 'react-router-dom';
 
 const overviewItems = [
   {
+    path: '/jwt-auth',
+    title: 'JWT Authentication & Auto Logout',
+    icon: '🔐',
+    category: 'Authentication',
+    description:
+      'Explore mock login, frontend JWT claim checks, protected routes, session restoration, manual logout, and automatic token-expiry logout.',
+  },
+  {
     path: '/custom-hooks',
     title: 'Custom Hooks & DOM Utilities',
     icon: '📏',

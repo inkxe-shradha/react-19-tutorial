@@ -4,6 +4,13 @@ import './Layout.css';
 
 const conceptNavItems = [
   {
+    path: '/jwt-auth',
+    label: 'JWT Authentication',
+    icon: '🔐',
+    badge: 'Login & Expiry',
+    badgeColor: 'badge-amber',
+  },
+  {
     path: '/',
     label: 'Overview Hub',
     icon: '🏠',

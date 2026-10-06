@@ -1,6 +1,11 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Layout from './components/layout/Layout';
+import JwtAuthProvider from './components/auth/JwtAuthProvider';
+import JwtAuthDemo, {
+  JwtDashboard,
+  JwtProtectedRoute,
+} from './components/concepts/JwtAuthDemo';
 
 // Concept Pages
 import HomeOverview from './components/concepts/HomeOverview';
@@ -33,25 +38,32 @@ const NotFound = () => (
 function App() {
   return (
     <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<HomeOverview />} />
-          <Route path="custom-hooks" element={<CustomHooksDemo />} />
-          <Route path="react-19-hooks" element={<React19HooksDemo />} />
-          <Route path="concurrent-hooks" element={<ConcurrentHooksDemo />} />
-          <Route path="custom-state" element={<CustomStateDemo />} />
-          <Route path="context-api" element={<ContextDemo />} />
-          <Route path="memo-callback" element={<MemoCallbackDemo />} />
-          <Route path="reducer-counter" element={<ReducerCounterDemo />} />
-          <Route path="shopping-cart" element={<ShoppingCartDemo />} />
-          <Route path="class-components" element={<ClassComponentsDemo />} />
-          <Route path="react-router" element={<ReactRouterDemo />} />
-          <Route path="react-19-features" element={<React19FeaturesDemo />} />
-          <Route path="weather-app" element={<WeatherApp />} />
-          {/* Not found */}
-          <Route path="*" element={<NotFound />} />
-        </Route>
-      </Routes>
+      <JwtAuthProvider>
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route index element={<HomeOverview />} />
+            <Route path="custom-hooks" element={<CustomHooksDemo />} />
+            <Route path="react-19-hooks" element={<React19HooksDemo />} />
+            <Route path="concurrent-hooks" element={<ConcurrentHooksDemo />} />
+            <Route path="custom-state" element={<CustomStateDemo />} />
+            <Route path="context-api" element={<ContextDemo />} />
+            <Route path="memo-callback" element={<MemoCallbackDemo />} />
+            <Route path="reducer-counter" element={<ReducerCounterDemo />} />
+            <Route path="shopping-cart" element={<ShoppingCartDemo />} />
+            <Route path="class-components" element={<ClassComponentsDemo />} />
+            <Route path="react-router" element={<ReactRouterDemo />} />
+            <Route path="react-19-features" element={<React19FeaturesDemo />} />
+            <Route path="weather-app" element={<WeatherApp />} />
+            <Route path="jwt-auth" element={<JwtAuthDemo />}>
+              <Route element={<JwtProtectedRoute />}>
+                <Route path="dashboard" element={<JwtDashboard />} />
+              </Route>
+            </Route>
+            {/* Not found */}
+            <Route path="*" element={<NotFound />} />
+          </Route>
+        </Routes>
+      </JwtAuthProvider>
     </BrowserRouter>
   );
 }
